@@ -1,5 +1,6 @@
 #! /usr/bin/env bash
 
+rm -rf /home/pgu/git/SOSD/results/*
 echo "Executing benchmark and saving results..."
 num_iterations=1;
 while getopts n:c arg; do
@@ -22,6 +23,7 @@ function do_benchmark() {
         echo "Already have results for $1"
     else
         echo "Executing workload $1"
+        echo "$BENCHMARK -r $2 ./data/$1 ./data/$1_equality_lookups_10M --pareto | tee ./results/$1_results.txt"
         $BENCHMARK -r $2 ./data/$1 ./data/$1_equality_lookups_10M --pareto | tee ./results/$1_results.txt
     fi
 }

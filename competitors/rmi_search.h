@@ -36,7 +36,7 @@ class RMI_B {
     uint64_t start = (guess < error ? 0 : guess - error);
     uint64_t stop = (guess + error >= data_size_ ? data_size_ : guess + error);
 
-    return (SearchBound){start, stop};
+    return (SearchBound){start, guess};
   }
 
   std::string name() const { return "RMI"; }
